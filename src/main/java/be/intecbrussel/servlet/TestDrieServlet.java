@@ -13,6 +13,9 @@ import java.io.PrintWriter;
 
 @WebServlet(name = "testdrie", value = "/testdrie")
 public class TestDrieServlet extends HttpServlet {
+
+    // zeer gevaarlijk!
+    // er is maar 1 name voor potentieel 10 000 bezoekers! er is immers maar 1 TestDrieServlet object voor een hele server!
     private String name;
 
 
@@ -20,6 +23,8 @@ public class TestDrieServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //if the name reference is null it will redirect to the login will not change the url.
+
+        //je zal hier dus session attributen moeten lezen om te kijken of een gebruiker ingelogd is of niet
         if (name == null){
                 RequestDispatcher requestDispatcher = request
                         .getRequestDispatcher("/login.jsp");
@@ -46,6 +51,8 @@ public class TestDrieServlet extends HttpServlet {
                         .getRequestDispatcher("/welcome.jsp");
                 requestDispatcher.forward(request, response);
             } else {
+                // dit hoort allemaal thuis in een jsp file.
+                // een redirect naar login.jsp zou hier voldoende moeten zijn.
 
                 //if the name reference is send from the login.jsp form as a null
                 //then the following code will rerender until correctly filled in.

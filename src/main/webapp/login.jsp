@@ -14,6 +14,10 @@
 <%--The following code prevents the user to return to the login form--%>
 <%--after entering there name. unable to do it again until the have loged out--%>
 
+<%--
+hola pola, java code in de jsp, geen goed idee! ookal is het hier om een paar headers te zetten
+scripting in jsp = geen goed idee!
+--%>
 <%
     response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");//Http 1.1
     response.setHeader("Pragma", "no-cache");//Http 1.0
